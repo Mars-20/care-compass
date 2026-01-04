@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logoLight from "@/assets/logo-light.png";
 
 const navLinks = [
-  { label: "الرئيسية", href: "#" },
+  { label: "الرئيسية", href: "/" },
   { label: "المميزات", href: "#features" },
   { label: "كيف يعمل", href: "#how-it-works" },
   { label: "التواصل", href: "#contact" },
@@ -19,7 +20,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <div className="h-10 w-auto flex items-center justify-center rounded-lg bg-primary p-1.5">
                 <img
                   src={logoLight}
@@ -27,7 +28,7 @@ export function Navbar() {
                   className="h-full w-auto object-contain"
                 />
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -45,11 +46,11 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm">
-              تسجيل الدخول
+            <Button variant="ghost" size="sm" asChild>
+              <Link to="/auth">تسجيل الدخول</Link>
             </Button>
-            <Button variant="default" size="sm">
-              ابدأ مجاناً
+            <Button variant="default" size="sm" asChild>
+              <Link to="/auth">ابدأ مجاناً</Link>
             </Button>
           </div>
 
@@ -84,11 +85,11 @@ export function Navbar() {
                 </a>
               ))}
               <div className="flex gap-3 mt-3 pt-3 border-t border-border">
-                <Button variant="ghost" size="sm" className="flex-1">
-                  تسجيل الدخول
+                <Button variant="ghost" size="sm" className="flex-1" asChild>
+                  <Link to="/auth">تسجيل الدخول</Link>
                 </Button>
-                <Button variant="default" size="sm" className="flex-1">
-                  ابدأ مجاناً
+                <Button variant="default" size="sm" className="flex-1" asChild>
+                  <Link to="/auth">ابدأ مجاناً</Link>
                 </Button>
               </div>
             </div>

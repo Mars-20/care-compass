@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Play, Shield, Users, Calendar } from "lucide-react";
 
@@ -30,9 +31,11 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up delay-200">
-              <Button variant="hero" size="xl">
-                <span>ابدأ تجربتك المجانية</span>
-                <ArrowLeft className="w-5 h-5" />
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/auth">
+                  <span>ابدأ تجربتك المجانية</span>
+                  <ArrowLeft className="w-5 h-5" />
+                </Link>
               </Button>
               <Button variant="outline" size="xl" className="group">
                 <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
