@@ -23,6 +23,20 @@ import PatientsList from "./pages/patients/PatientsList";
 import CreatePatient from "./pages/patients/CreatePatient";
 import PatientProfile from "./pages/patients/PatientProfile";
 
+// Visit Pages
+import VisitsList from "./pages/visits/VisitsList";
+import CreateVisit from "./pages/visits/CreateVisit";
+import VisitDetails from "./pages/visits/VisitDetails";
+
+// Appointment Pages
+import AppointmentsList from "./pages/appointments/AppointmentsList";
+
+// Follow-up Pages
+import FollowUpsList from "./pages/follow-ups/FollowUpsList";
+
+// Admin - Registration Codes
+import RegistrationCodes from "./pages/admin/RegistrationCodes";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -85,6 +99,44 @@ const App = () => (
               <Route path="/patients/:id" element={
                 <ProtectedRoute>
                   <PatientProfile />
+                </ProtectedRoute>
+              } />
+
+              {/* Visit Routes */}
+              <Route path="/visits" element={
+                <ProtectedRoute>
+                  <VisitsList />
+                </ProtectedRoute>
+              } />
+              <Route path="/visits/new" element={
+                <ProtectedRoute>
+                  <CreateVisit />
+                </ProtectedRoute>
+              } />
+              <Route path="/visits/:id" element={
+                <ProtectedRoute>
+                  <VisitDetails />
+                </ProtectedRoute>
+              } />
+
+              {/* Appointment Routes */}
+              <Route path="/appointments" element={
+                <ProtectedRoute>
+                  <AppointmentsList />
+                </ProtectedRoute>
+              } />
+
+              {/* Follow-up Routes */}
+              <Route path="/follow-ups" element={
+                <ProtectedRoute>
+                  <FollowUpsList />
+                </ProtectedRoute>
+              } />
+
+              {/* Admin - Registration Codes */}
+              <Route path="/admin/codes" element={
+                <ProtectedRoute requiredRole="admin">
+                  <RegistrationCodes />
                 </ProtectedRoute>
               } />
 
