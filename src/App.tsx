@@ -17,11 +17,17 @@ import ClinicsManagement from "./pages/admin/ClinicsManagement";
 import CreateClinic from "./pages/admin/CreateClinic";
 import UsersManagement from "./pages/admin/UsersManagement";
 import AuditLogs from "./pages/admin/AuditLogs";
+import RegistrationCodes from "./pages/admin/RegistrationCodes";
+import AdminSettings from "./pages/admin/AdminSettings";
+
+// Doctor Pages
+import DoctorDashboard from "./pages/doctor/DoctorDashboard";
 
 // Patient Pages
 import PatientsList from "./pages/patients/PatientsList";
 import CreatePatient from "./pages/patients/CreatePatient";
 import PatientProfile from "./pages/patients/PatientProfile";
+import EditPatient from "./pages/patients/EditPatient";
 
 // Visit Pages
 import VisitsList from "./pages/visits/VisitsList";
@@ -34,8 +40,10 @@ import AppointmentsList from "./pages/appointments/AppointmentsList";
 // Follow-up Pages
 import FollowUpsList from "./pages/follow-ups/FollowUpsList";
 
-// Admin - Registration Codes
-import RegistrationCodes from "./pages/admin/RegistrationCodes";
+// Settings & Profile
+import SettingsPage from "./pages/settings/SettingsPage";
+import ProfilePage from "./pages/profile/ProfilePage";
+import ReportsPage from "./pages/reports/ReportsPage";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +62,7 @@ const App = () => (
               {/* Doctor Dashboard */}
               <Route path="/dashboard" element={
                 <ProtectedRoute>
-                  <Dashboard />
+                  <DoctorDashboard />
                 </ProtectedRoute>
               } />
 
@@ -84,6 +92,16 @@ const App = () => (
                   <AuditLogs />
                 </ProtectedRoute>
               } />
+              <Route path="/admin/codes" element={
+                <ProtectedRoute requiredRole="admin">
+                  <RegistrationCodes />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/settings" element={
+                <ProtectedRoute requiredRole="admin">
+                  <AdminSettings />
+                </ProtectedRoute>
+              } />
 
               {/* Patient Routes */}
               <Route path="/patients" element={
@@ -99,6 +117,11 @@ const App = () => (
               <Route path="/patients/:id" element={
                 <ProtectedRoute>
                   <PatientProfile />
+                </ProtectedRoute>
+              } />
+              <Route path="/patients/:id/edit" element={
+                <ProtectedRoute>
+                  <EditPatient />
                 </ProtectedRoute>
               } />
 
@@ -133,10 +156,20 @@ const App = () => (
                 </ProtectedRoute>
               } />
 
-              {/* Admin - Registration Codes */}
-              <Route path="/admin/codes" element={
-                <ProtectedRoute requiredRole="admin">
-                  <RegistrationCodes />
+              {/* Settings & Profile */}
+              <Route path="/settings" element={
+                <ProtectedRoute>
+                  <SettingsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              } />
+              <Route path="/reports" element={
+                <ProtectedRoute>
+                  <ReportsPage />
                 </ProtectedRoute>
               } />
 
